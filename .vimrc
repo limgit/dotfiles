@@ -12,6 +12,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'The-NERD-tree'  "File system explorer
 Plugin 'ctrlpvim/ctrlp.vim'  "Project file search in vim
+Plugin 'vim-syntastic/syntastic'  "Syntax checker for vim
 
 "All of your Plugins must be added before the following line
 call vundle#end()  "required
@@ -48,3 +49,20 @@ autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
 "For python, use 4 space indentation
 autocmd FileType python setlocal shiftwidth=4 tabstop=4
 
+"Settings for syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_check_on_wq = 0
+
+"Set pylintrc file for pylint
+function! FindRCFile(what, where)
+  let cfg = findfile(a:what, escape(a:where, ' ') . ';')
+  return cfg !=# '' ? shellescape(cfg) : ''
+endfunction
+
+autocmd FileType python let b:syntastic_python_pylint_args = "--rcfile=" . FindRCFile('pylintrc', expand('<afile>:p:h', 1))
+
+nnoremap <F12> :SyntasticCheck<CR>:Error<CR>
+"End settings for syntastic

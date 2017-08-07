@@ -13,6 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'The-NERD-tree'  "File system explorer
 Plugin 'ctrlpvim/ctrlp.vim'  "Project file search in vim
 Plugin 'vim-syntastic/syntastic'  "Syntax checker for vim
+Plugin 'tpope/vim-fugitive'  "Git integration for vim
 
 "All of your Plugins must be added before the following line
 call vundle#end()  "required
@@ -38,7 +39,7 @@ set softtabstop=2
 set shiftwidth=2  "auto indentation configuration
 
 set laststatus=2
-set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F
+set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %{fugitive#statusline()}\ %F
 
 set hlsearch  "highlight search
 set autoread  "automatically read file when file is modified outside

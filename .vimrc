@@ -45,6 +45,14 @@ set hlsearch  "highlight search
 set autoread  "automatically read file when file is modified outside
 set ruler  "display current cursor position
 
+"Highlight all characters past 80 columns
+"https://stackoverflow.com/questions/235439/vim-80-column-layout-concerns
+"https://stackoverflow.com/questions/395114/vim-syntax-coloring-how-do-i-highlight-long-lines-only
+augroup vimrc_autocmds
+  autocmd BufEnter * highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+  autocmd BufEnter * match OverLength /\%>80v.\+/
+augroup END
+
 "For ruby, use 2 space indentation
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
 "For python, use 4 space indentation

@@ -45,6 +45,10 @@ set hlsearch  "highlight search
 set autoread  "automatically read file when file is modified outside
 set ruler  "display current cursor position
 
+set cc=81  "Guideline for 80 characters rule
+"Change color of colorcolumn (cc)
+highlight ColorColumn ctermbg=cyan
+
 "Highlight all characters past 80 columns
 "https://stackoverflow.com/questions/235439/vim-80-column-layout-concerns
 "https://stackoverflow.com/questions/395114/vim-syntax-coloring-how-do-i-highlight-long-lines-only

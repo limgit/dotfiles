@@ -88,9 +88,15 @@ endfunction
 nnoremap <F11> :call ToggleOverLength()<CR>
 
 "For ruby, use 2 space indentation
-autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
+augroup filetype_ruby
+  autocmd!
+  autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
+augroup END
 "For python, use 4 space indentation
-autocmd FileType python setlocal shiftwidth=4 tabstop=4
+augroup filetype_python
+  autocmd!
+  autocmd FileType python setlocal shiftwidth=4 tabstop=4
+augroup END
 
 "Settings for syntastic
 set statusline+=%#warningmsg#
@@ -105,7 +111,10 @@ function! FindRCFile(what, where)
   return cfg !=# '' ? shellescape(cfg) : ''
 endfunction
 
-autocmd FileType python let b:syntastic_python_pylint_args = "--rcfile=" . FindRCFile('pylintrc', expand('<afile>:p:h', 1))
+augroup syntastic_python
+  autocmd!
+  autocmd FileType python let b:syntastic_python_pylint_args = "--rcfile=" . FindRCFile('pylintrc', expand('<afile>:p:h', 1))
+augroup END
 
 nnoremap <F12> :SyntasticCheck<CR>:Error<CR>
 "End settings for syntastic

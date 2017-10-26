@@ -85,8 +85,6 @@ function! ToggleOverLength()
   call WinDo('call SetOverLength()')
 endfunction
 
-nnoremap <F11> :call ToggleOverLength()<CR>
-
 "For ruby, use 2 space indentation
 augroup filetype_ruby
   autocmd!
@@ -115,6 +113,8 @@ augroup syntastic_python
   autocmd!
   autocmd FileType python let b:syntastic_python_pylint_args = "--rcfile=" . FindRCFile('pylintrc', expand('<afile>:p:h', 1))
 augroup END
-
-nnoremap <F12> :SyntasticCheck<CR>:Error<CR>
 "End settings for syntastic
+
+"List of mappings
+nnoremap <F11> :call ToggleOverLength()<CR>
+nnoremap <F12> :SyntasticCheck<CR>:Error<CR>

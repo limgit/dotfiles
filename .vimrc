@@ -45,17 +45,47 @@ set hlsearch  "highlight search
 set autoread  "automatically read file when file is modified outside
 set ruler  "display current cursor position
 
-set cc=81  "Guideline for 80 characters rule
 "Change color of colorcolumn (cc)
 highlight ColorColumn ctermbg=cyan
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 
-"Highlight all characters past 80 columns
-"https://stackoverflow.com/questions/235439/vim-80-column-layout-concerns
-"https://stackoverflow.com/questions/395114/vim-syntax-coloring-how-do-i-highlight-long-lines-only
-augroup vimrc_autocmds
-  autocmd BufEnter * highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-  autocmd BufEnter * match OverLength /\%>80v.\+/
+let s:ShowOverLength = 1
+
+augroup highlight_autocmds
+  autocmd!
+  "call SetOverLength everytime when buffer is loaded to window
+  autocmd BufWinEnter * call SetOverLength()
+  "call SetOverLength to every window everytime when entering new tab
+  autocmd TabEnter * call WinDo('call SetOverLength()')
 augroup END
+
+"Apply command to every window
+"http://vim.wikia.com/wiki/Run_a_command_in_multiple_buffers
+function! WinDo(command)
+  let currWin = winnr()
+  execute 'windo ' . a:command
+  execute currWin . 'wincmd w'
+endfunction
+
+function! SetOverLength()
+  if s:ShowOverLength == 1
+    "Highlight all characters past 80 columns
+    "https://stackoverflow.com/questions/235439/vim-80-column-layout-concerns
+    "https://stackoverflow.com/questions/395114/vim-syntax-coloring-how-do-i-highlight-long-lines-only
+    match OverLength /\%>80v.\+/
+    set cc=81
+  else
+    match none
+    set cc=0
+  endif
+endfunction
+
+function! ToggleOverLength()
+  let s:ShowOverLength = 1 - s:ShowOverLength
+  call WinDo('call SetOverLength()')
+endfunction
+
+nnoremap <F11> :call ToggleOverLength()<CR>
 
 "For ruby, use 2 space indentation
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2

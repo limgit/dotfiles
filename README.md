@@ -1,12 +1,12 @@
-# configs
-My custom config files
+# dotfiles
+My custom dotfiles
 
 ## Prerequisites
  - git
  - vim
  
 ## How to use
- 1. `$ git clone https://github.com/limgit/configs.git && cd configs`
+ 1. `$ git clone https://github.com/limgit/dotfiles.git && cd dotfiles`
  2. Run each deploy files as you want
  3. Files are deployed now
 

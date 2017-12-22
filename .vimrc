@@ -116,5 +116,6 @@ augroup END
 "End settings for syntastic
 
 "List of mappings
+nnoremap <F10> :NERDTreeToggle<CR>
 nnoremap <F11> :call ToggleOverLength()<CR>
 nnoremap <F12> :SyntasticCheck<CR>:Error<CR>

@@ -14,6 +14,7 @@ Plugin 'The-NERD-tree'  "File system explorer
 Plugin 'ctrlpvim/ctrlp.vim'  "Project file search in vim
 Plugin 'vim-syntastic/syntastic'  "Syntax checker for vim
 Plugin 'tpope/vim-fugitive'  "Git integration for vim
+Plugin 'leafgarland/typescript-vim'  "TypeScript support for vim
 
 "All of your Plugins must be added before the following line
 call vundle#end()  "required

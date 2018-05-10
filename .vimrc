@@ -49,6 +49,7 @@ set ruler  "display current cursor position
 "Change color of colorcolumn (cc)
 highlight ColorColumn ctermbg=cyan
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 
 let s:ShowOverLength = 1
 
@@ -85,6 +86,11 @@ function! ToggleOverLength()
   let s:ShowOverLength = 1 - s:ShowOverLength
   call WinDo('call SetOverLength()')
 endfunction
+
+augroup trailing_whitespace
+  autocmd!
+  autocmd Syntax * syn match ExtraWhitespace /\s\+$/
+augroup END
 
 "For ruby, use 2 space indentation
 augroup filetype_ruby

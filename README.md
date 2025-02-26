@@ -1,20 +1,22 @@
 # dotfiles
 My custom dotfiles
 
-## Prerequisites
- - git
- - vim
- - make
- 
-## How to use
- 1. `$ git clone https://github.com/limgit/dotfiles.git && cd dotfiles`
- 2. Run `$ make USERNAME=<username> EMAIL=<email>`
- 3. Files are deployed now
- 4. You can also deploy each files seperately as following examples:
-    - `$ make vimrc`: Run `vimrc-deploy.sh`
-    - `$ make gitconfig USERNAME=<username> EMAIL=<email>`: Run `gitconfig-deploy.sh` with given username and email
+## About each files
+- `.bashrc`: Configuration for `bash`. Copy this file to `~/.bash/custom_bashrc` and add `source "$HOME/.bash/custom_bashrc"` to the end of `~/.bashrc`.
+    - or, simply, append the file contents to `~/.bashrc` 😉.
+- `.gitconfig`: Global configuration for `git`. Copy this file to `~/.gitconfig` and modify accordingly.
+- `.gitignore`: Global configuration to let `git` ignore specific files. Copy this file to `~/.gitignore`.
+- [OUTDATED AS OF 2025-02-26] `.vimrc`: Configuration for `vim`. Need to install [Vundle](https://github.com/VundleVim/Vundle.vim) before using it.
+- `aliases`: List of useful aliases.
 
-### Each deploy file's behavior
- - **vimrc-deploy.sh**: Install `Vundle` and copy `.vimrc` to `~/.vimrc`. After that, install all the Vundle plugins named
- - **gitconfig-deploy.sh**: Create new `~/.gitconfig` with given user name and email. After that, append the content of `.gitconfig` to `~/.gitconfig`
- - **bashrc-deploy.sh**: Copy `.bashrc` to `~/.bash/custom_basrc`. After that, the instruction of what to do is printed
+## List of CLI tools that I use
+- [fzf](https://github.com/junegunn/fzf): A command-line fuzzy finder.
+- [k9s](https://k9scli.io/): Cool-looking K8S CLI.
+- [mise](https://github.com/jdx/mise): An all-in-one version manager.
+- [Oh My Zsh](https://ohmyz.sh/): zsh plugin management system.
+    - List of official plugins I use often:
+        - `git`: Aliases for git commands like `gst`, `gb`.
+        - `kubectl`: Aliases for kubectl commands like `kgp`, `kgd`.
+    - List of custom plugins I use often:
+        - [`alias-tips`](https://github.com/djui/alias-tips): To learn zsh aliases by using it.
+        - [`zsh-syntax-highlighting`](https://github.com/zsh-users/zsh-syntax-highlighting): Highlight my CLI.

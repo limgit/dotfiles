@@ -1,5 +1,41 @@
+# Uncomment and set this appropriately, if you want to manage git user info per directory
+# The ~/.gitconfig-for-directory should include user.email and user.name
+# [includeIf "gitdir:~/some-directory/"]
+#   path=~/.gitconfig-for-directory
+
+[init]
+  defaultBranch = main
+
 [core]
   editor = vim
+  # Install `bat` and uncomment this if you want to use `bat` as pager.
+  # pager = bat
+  excludesFile = ~/.gitignore
+
+[diff]
+  submodule = log
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
+
+[merge]
+  conflictstyle = zdiff3
+
+[column]
+  ui = auto
+
+[branch]
+  sort = -committerdate
+
+[tag]
+  sort = version:refname
+
+[help]
+  autocorrect = prompt
 
 [alias]
+  # Pretty print the git log graph, though I usually use `glola` from zshrc git-alias plugin...
   logtree = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+  # List all the unpushed commits
+  out = "log @{u}.."

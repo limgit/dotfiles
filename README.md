@@ -7,7 +7,7 @@ My custom dotfiles
 - `.gitconfig`: Global configuration for `git`. Copy this file to `~/.gitconfig` and modify accordingly.
 - `.gitignore`: Global configuration to let `git` ignore specific files. Copy this file to `~/.gitignore`.
 - [OUTDATED AS OF 2025-02-26] `.vimrc`: Configuration for `vim`. Need to install [Vundle](https://github.com/VundleVim/Vundle.vim) before using it.
-- `aliases`: List of useful aliases.
+- `aliases.sh`: List of useful aliases.
 
 ## List of CLI tools that I use
 - [fzf](https://github.com/junegunn/fzf): A command-line fuzzy finder.

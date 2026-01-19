@@ -6,6 +6,7 @@ My custom dotfiles
     - or, simply, append the file contents to `~/.bashrc` 😉.
 - `.gitconfig`: Global configuration for `git`. Copy this file to `~/.gitconfig` and modify accordingly.
 - `.gitignore`: Global configuration to let `git` ignore specific files. Copy this file to `~/.gitignore`.
+- `.tmux.conf`: Global configutaion for `tmux`. Copy this file to `~/.tmux.conf`.
 - [OUTDATED AS OF 2025-02-26] `.vimrc`: Configuration for `vim`. Need to install [Vundle](https://github.com/VundleVim/Vundle.vim) before using it.
 - `aliases.sh`: List of useful aliases.
 
